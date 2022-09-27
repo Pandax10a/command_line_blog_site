@@ -103,7 +103,9 @@ def request_user_input():
             #         print('the else')
         except:
             print('you have landed on error')
-
+# each of these function calls a stored procedure from dbeaver, for some reason a singular ? did not work so i split
+# it into 3 ? and just retrieve the from index, i reencode the strings back into utf-8 since dbeaver seems to 
+# like doing that for me when i call it
 def adding_post(client_id):
     
     if (client_id != None):
@@ -128,7 +130,7 @@ def adding_post(client_id):
         cursor.close()
         conn.close()
 
-
+# lots of repeat of code and i decoded the string so it didnt have b' in front of it
 def retrieve_all_post():
         
         conn = mariadb.connect(
@@ -146,7 +148,7 @@ def retrieve_all_post():
         conn.close()
         for x in result:
             print("title: ", x[0].decode("UTF-8")," content: ", x[1])
-
+# this mostly works, couldnt get it to repeat on no on last conditional
 def keep_logged_in():
     try:
         the_tries = request_user_input()
