@@ -28,7 +28,7 @@ result = cursor.fetchall()
 # print(client_list_all_decoded)
 
 
-print(result)
+
 
 
 
@@ -147,13 +147,32 @@ def retrieve_all_post():
         for x in result:
             print("title: ", x[0].decode("UTF-8")," content: ", x[1])
 
+def keep_logged_in():
+    try:
+        the_tries = request_user_input()
+        if(the_tries != None):
+            while True:
+                user_answer = input('do you want to insert a new post?: y or n ')
+                if(user_answer == 'y'):
+                    adding_post(the_tries)
+                else:
+                    user_answer_2 = input('do you want to read all post?: y or n ')
+                    if (user_answer_2 == 'y'):
+                        retrieve_all_post()
+                    else:
+                        user_answer_3 = input('do you want to quit?: y or n ')
+                        if (user_answer_3 == y):
+                            print('good bye')
+                            return
+                        else:
+                            request_user_input()
+    except:
+        print('did not work')        
     
-    
-retrieve_all_post()
+keep_logged_in()
    
       
 
-the_tries = request_user_input()
 
 
-print(the_tries)
+
